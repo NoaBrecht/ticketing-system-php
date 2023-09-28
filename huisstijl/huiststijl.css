@@ -1,0 +1,83 @@
+:root {
+  --hs-blauw: #0097d8;
+  --hs-grijs: #4b565c;
+  --hs-geel: #fdc51e;
+  --hs-groen: #70b52b;
+  --hs-paars: #644595;
+  --hs-rood: #e32312;
+
+  --hs-donker-blauw: #3075ba;
+  --hs-donker-geel: #c96d13;
+  --hs-donker-groen: #2b9687;
+  --hs-donker-paars: #972b85;
+  --hs-donker-rood: #8b1812;
+  --hs-donker-blauw-hover: 
+  
+}
+
+.vertical-center{
+    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: var(--hs-blauw);
+    border-color: var(--hs-blauw);
+  }
+  .btn-primary:hover {
+    color: #fff;
+    background-color: var(--hs-donker-blauw);
+    border-color: var(--hs-donker-blauw);
+  }
+
+
+
+
+
+  .form-check-input:checked {
+    background-color: var(--hs-blauw);
+    border-color: var(--hs-blauw);
+  }
+  html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+
+body {
+  padding-top: 56px;
+}
+
+/* Code voor de offcanvas */
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #343a40;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}
+.border-end-nav {
+  border-right: 1px solid #dee2e6 !important;
+}
+@media (max-width: 992px) {
+.border-end-nav {
+    border: none!important;
+}
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.55);
+}
