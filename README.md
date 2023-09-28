@@ -3,7 +3,7 @@
 
 # ticketing-system-php
 
-This is a ticketing system writen in php.
+This is a ticketing system written in php.
 
 ## Authors
 - [@NoaBrecht   ](https://www.github.com/NoaBrecht)
