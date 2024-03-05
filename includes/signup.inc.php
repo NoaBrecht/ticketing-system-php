@@ -1,19 +1,25 @@
 <?php
+// We kijken of de bezoeker op deze pagina is gekomen door het formulier te verzenden
 
 if (isset($_POST['submit'])) {
+    // We halen de gegevens op uit het formulier en doen een eerste controle op SQL injecties
 
-    $name = mysqli_real_escape_string($conn,  $_POST['name']);
-    $fname = mysqli_real_escape_string($conn,  $_POST['fname']);
-    $email = mysqli_real_escape_string($conn,  $_POST['email']);
-    $username = mysqli_real_escape_string($conn,  $_POST['uid']);
-    $usersRol = mysqli_real_escape_string($conn,  $_POST['usersRol']);
-    $pwd = mysqli_real_escape_string($conn,  $_POST['pwd']);
-    $pwdRepeat = mysqli_real_escape_string($conn,  $_POST['pwdrepeat']);
-   
+    $name = $_POST['name'];
+    $fname = $_POST['fname'];
+    $email = $_POST['email'];
+    $username = $_POST['uid'];
+    $usersRol = $_POST['usersRol'];
+    $pwd = $_POST['pwd'];
+    $pwdRepeat = $_POST['pwdrepeat'];
+
+    // We voegen het bestand dbh.inc.php toe
 
     require_once 'dbh.inc.php';
+    // We voegen het bestand functions.inc.php toe
+
     require_once 'functions.inc.php';
 
+    // We roepen verschillende functies op
     if (emptyInputSignup($name, $fname, $email, $username, $pwd, $pwdRepeat) !== false) {
         header("location: ../signup.php?error=emptyinput");
         exit();
@@ -36,10 +42,7 @@ if (isset($_POST['submit'])) {
     }
 
     createUser($conn, $name, $fname, $email, $username, $usersRol, $pwd);
-    
-
- }
- else {
-     header("location: ../signup.php");
-     exit();
+} else {
+    header("location: ../signup.php");
+    exit();
 }

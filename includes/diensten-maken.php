@@ -1,27 +1,34 @@
 <?php
+// We voegen het bestand dbh.inc.php toe
+
 include_once 'dbh.inc.php';
+// We kijken of de bezoeker op deze pagina is gekomen door het formulier te verzenden
 
-$dienst = mysqli_real_escape_string($conn,  $_POST['dienst']);
+if (isset($_POST['submit'])) {
+    // We halen de gegevens op uit het formulier en doen een eerste controle op SQL injecties
 
-$sql = "INSERT INTO diensten (dienst) VALUES (?)";
+    $dienst = mysqli_real_escape_string($conn,  $_POST['dienst']);
 
-// prepare and bind
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $dienst);
+    if (condition) {
+        # code...
+    }
+    // We maken de sql klaar om in de databank ingegeven te worden.
 
-if ($stmt->execute()) {
+    $sql = "INSERT INTO diensten (dienst) VALUES (?)";
+
+    // prepare and bind
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $dienst);
+
+    if ($stmt->execute()) {
+    } else {
+        header("Location: ../diensten.php?error=error");
+    }
+
+    $stmt->close();
+    $conn->close();
+    header("Location: ../diensten.php?error=succes");
 } else {
-    header("Location: ../diensten.php?error=error");
+    header("location: ../diensten-maken.php?error=error");
+    exit();
 }
-
-$stmt->close();
-$conn->close();
-header("Location: ../diensten.php?error=succes");
-
-
-
-
-// $sql = "INSERT INTO diensten (dienst) VALUES ('$dienst');";
-// mysqli_query($conn, $sql);
-
-// header("Location: ../diensten.php");

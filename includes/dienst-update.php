@@ -1,14 +1,22 @@
 <?php
-include_once 'dbh.inc.php';
-if (isset($_POST['submit'])) {
-    session_start();
+// We voegen het bestand dbh.inc.php toe
 
+include_once 'dbh.inc.php';
+// We kijken of de bezoeker op deze pagina is gekomen door het formulier te verzenden
+
+if (isset($_POST['submit'])) {
+    // We starten de sessie
+
+    session_start();
+    // We kijken naar de dienst die geupdate moet worden
     $dienst_id = $_SESSION["lastvieuweddienst"];
 
 
-    // Het ticket uploaden naar de databank
-    // $ticket_id = mysqli_real_escape_string($conn,  $_POST['ticket_id']);
+    // We gaan de dienst updaten in de databank
+    // We halen de nieuwe naam op uit het formulier en doen een eerste controle op SQL injecties
     $newname = mysqli_real_escape_string($conn,  $_POST['dienstnaam']);
+
+    // We maken de sql klaar om in de databank ingegeven te worden.
 
     $sql = "UPDATE diensten SET dienst=? WHERE dienstID =?";
 
@@ -26,12 +34,6 @@ if (isset($_POST['submit'])) {
     $stmt->close();
     $conn->close();
     header("Location: ../diensten.php?error=succes");
-
-    // $sql = "UPDATE diensten SET dienst= '$newname', WHERE dienstID  = $dienst_id;";
-
-
-    // mysqli_query($conn, $sql);
-    // header("Location: ../diensten.php");
 } else {
     header("location : ../diensten.php?error=error");
     exit();

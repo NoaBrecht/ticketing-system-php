@@ -1,5 +1,7 @@
 <?php
 
+// We kijken of de bezoeker op deze pagina is gekomen door het formulier te verzenden
+
 if (isset($_POST['submit'])) {
     session_start();
     // print_r($_SESSION);
@@ -7,12 +9,16 @@ if (isset($_POST['submit'])) {
     $edituserID = $_SESSION["userid"];
     $usersPwd = $_SESSION["usersPwd"];
 
-
+// We halen de gegevens uit het formulier
     $pwdNow = $_POST['Huidpwd'];
     $newpwd = $_POST['pwd'];
     $newpwdrepeat = $_POST['pwdrepeat'];
 
+    // We voegen het bestand dbh.inc.php toe
+
     require_once 'dbh.inc.php';
+    // We voegen het bestand functions.inc.php toe
+
     require_once 'functions.inc.php';
 
     if (emptyInputreset($pwdNow, $newpwd, $newpwdrepeat) !== false) {

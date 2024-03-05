@@ -1,9 +1,9 @@
 <?php
-
-$serverName = "servername";
-$dBUsername = "username";
-$dBPassword = "password";
-$dBName = "dbname";
+// We geven de gegevens van de databank in
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "ID201584_noa";
 
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 

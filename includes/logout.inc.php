@@ -1,5 +1,5 @@
 <?php
-
+// We melden de gebruiker uit
 session_start();
 session_unset();
 session_destroy();

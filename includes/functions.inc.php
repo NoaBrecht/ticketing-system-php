@@ -1,5 +1,5 @@
 <?php
-
+// Deze functie kijkt of de ingegeven gegevens niet leeg zijn
 function emptyInputSignup($name, $fname, $email, $username, $pwd, $pwdRepeat)
 {
     $result;
@@ -10,6 +10,7 @@ function emptyInputSignup($name, $fname, $email, $username, $pwd, $pwdRepeat)
     }
     return $result;
 }
+// Deze functie kijkt of de ingegeven gegevens niet leeg zijn
 function emptyInputreset($Huidpwd, $pwd, $pwdRepeat)
 {
     $result;
@@ -20,7 +21,7 @@ function emptyInputreset($Huidpwd, $pwd, $pwdRepeat)
     }
     return $result;
 }
-
+// Deze functie kijkt of de ingegeven gebruikersnaam geldig is volgens de eisen van de beveiligin
 function invalidUid($username)
 {
     $result;
@@ -31,6 +32,7 @@ function invalidUid($username)
     }
     return $result;
 }
+// Deze functie kijkt of het ingegeven email adress een echte email is
 
 function invalidEmail($email)
 {
@@ -42,6 +44,7 @@ function invalidEmail($email)
     }
     return $result;
 }
+// Deze functie kijkt of de 2 ingegeven wachtwoorden hetzelfde is.
 
 function pwdMatch($pwd, $pwdRepeat)
 {
@@ -53,6 +56,7 @@ function pwdMatch($pwd, $pwdRepeat)
     }
     return $result;
 }
+// Deze functie kijkt of de gebruikersnaam en het emailadress nog niet bestaat.
 
 function uidExists($conn, $username, $email)
 {
@@ -75,6 +79,7 @@ function uidExists($conn, $username, $email)
     }
     mysqli_stmt_close($stmt);
 }
+// Deze functie zal de nieuwe gebruiker aanmaken
 
 function createUser($conn, $name, $fname, $email, $username, $usersRol, $pwd)
 {
@@ -95,7 +100,7 @@ function createUser($conn, $name, $fname, $email, $username, $usersRol, $pwd)
 }
 
 
-
+// Er word gekeken of de velden van het inlogformulier niet leeg zijn
 function emptyInputLogin($username, $pwd)
 {
     $result;
@@ -106,6 +111,7 @@ function emptyInputLogin($username, $pwd)
     }
     return $result;
 }
+// Deze functie gaat de gebruiker laten inloggen als de gegevens correct zijn
 function loginUser($conn, $username, $pwd)
 {
     $uidExists = uidExists($conn, $username, $username);
@@ -123,6 +129,7 @@ function loginUser($conn, $username, $pwd)
         exit();
     } elseif ($checkPwd === true) {
         session_start();
+        // Er worden nu gegevens zoals de gebruikersnaam, naam, gebruikersid,... in een sessie bewaard.
         $_SESSION["userid"] = $uidExists["usersId"];
         $_SESSION["useruid"] = $uidExists["usersUid"];
         $_SESSION["usersFname"] = $uidExists["usersFname"];
@@ -131,15 +138,11 @@ function loginUser($conn, $username, $pwd)
         $_SESSION["usersRol"] = $uidExists["usersRol"];
         $_SESSION["usersPwd"] = $uidExists["usersPwd"];
 
-
-
-
-
-
         header("location: ../index.php");
         exit();
     }
 }
+// deze functie zal het wachtwoord van de gebruiker aanpassen
 function resetpwd($conn, $newpwd, $edituserID)
 {
     // $sql = "UPDATE users SET usersPwd= '$newpwd' WHERE usersId  = $edituserID;";
