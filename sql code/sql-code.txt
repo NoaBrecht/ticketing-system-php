@@ -1,0 +1,46 @@
+CREATE TABLE rollen (
+	id int(11) not null PRIMARY KEY AUTO_INCREMENT,
+    rolnaam varchar(128) not null
+);
+
+CREATE TABLE gebruikers (
+	id int(11) not null PRIMARY KEY AUTO_INCREMENT,
+    gebruikersnaam varchar(128) not null,
+	wachtwoord varchar(128) not null,
+    date datetime
+);
+
+INSERT into rollen (rolnaam) VALUES ('Beheerder');
+
+
+CREATE TABLE tickets(
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    korte_omschrijving VARCHAR(128) NOT NULL,
+    lange_omschrijving VARCHAR(1000) NOT NULL,
+    prioriteit VARCHAR(1000) NOT NULL,
+    toestel VARCHAR(1000) NOT NULL,
+    dienst VARCHAR(1000) NOT NULL,
+    datum_gemeld DATE NOT NULL
+);
+
+CREATE TABLE diensten(
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    dienst VARCHAR(150) NOT NULL
+);
+
+CREATE TABLE users(
+    usersId INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    usersName VARCHAR(128) NOT NULL,
+    usersFname VARCHAR(128) NOT NULL,
+    usersEmail VARCHAR(128) NOT NULL,
+    usersUid VARCHAR(128) NOT NULL,
+    usersRol VARCHAR(128) NOT NULL,
+    usersPwd VARCHAR(128) NOT NULL
+);
+
+CREATE TABLE prioriteiten (
+	prioriteitId int(11) not null PRIMARY KEY AUTO_INCREMENT,
+    prioriteit varchar(128) not null
+);
+
+INSERT INTO `prioriteiten` (`prioriteitId`, `prioriteit`) VALUES (NULL, 'laag'), (NULL, 'gemiddeld'), (NULL, 'hoog'), (NULL, 'afgerond');

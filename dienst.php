@@ -42,19 +42,19 @@ $_SESSION["lastvieuweddienst"] = $id;
         <?php
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
-          <h1>Ticket <?php echo $id ?></h1>
+          <h1>Dienst <?php echo $id ?></h1>
 
 
           <div class="col-md-3">
-            <label for="ID" class="form-label">Ticket ID:</label>
+            <label for="ID" class="form-label">Dienst ID:</label>
             <input type="text" class="form-control" id="dienst_id" name="dienst_id" value="<?php echo $row['dienstID'] ?>" readonly>
           </div>
           <div class="col-md-4">
-            <label for="inputPassword4" class="form-label">Korte omschrijving:</label>
+            <label for="inputPassword4" class="form-label">Dienst naam:</label>
             <input type="text" name="dienstnaam" class="form-control" id="dienstnaam" value="<?php echo $row['dienst'] ?>">
           </div>
           <div class="col-md-4">
-            <label for="time" class="form-label">Soort toestel:</label>
+            <label for="time" class="form-label">Datum aangemaakt:</label>
             <input type="text" class="form-control" id="toestel" name="toestel" value="<?php echo $row['dienst_time_aangemaakt'] ?>" readonly>
           </div>
 

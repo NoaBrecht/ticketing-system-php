@@ -44,7 +44,7 @@ if ($id == $currentusersID) {
         <?php
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
-          <h1>Ticket <?php echo $id ?></h1>
+          <h1>Gebruiker <?php echo $id ?></h1>
 
 
           <div class="col-md-3">

@@ -1,6 +1,12 @@
 <?php
 include_once 'components/session.php';
 include_once 'includes/dbh.inc.php';
+
+$currentusersRol = $_SESSION["usersRol"];
+
+if ($currentusersRol <= 1) {
+  header("location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
